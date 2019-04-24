@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ReizigerOracleDaoImpl /*extends OracleDao*/ implements ReizigerDAO  {
 
-    ArrayList<Reiziger> alleReizigers;
+    ArrayList<Reiziger> alleReizigers = new ArrayList();
     
     @Override
     public List<Reiziger> findall() {
@@ -33,29 +33,45 @@ public class ReizigerOracleDaoImpl /*extends OracleDao*/ implements ReizigerDAO 
         Date searchable = java.sql.Date.valueOf(gbdatum);
         ArrayList <Reiziger> gbdatummatch = new ArrayList();
         for(Reiziger rg : alleReizigers){
-            if(rg.getGBDatum().equals(searchable)){
-                gbdatummatch.add(rg);
-            } 
+           if(searchable != null && rg.getGBDatum() != null){
+                if(rg.getGBDatum().equals(searchable)){
+                    gbdatummatch.add(rg);
+                } 
+           }
         }
         return gbdatummatch;
     }
 
     @Override
     public Reiziger save(Reiziger reiziger) {
-        alleReizigers.add(reiziger);
-        return reiziger;
+        
+        this.update(reiziger);
+        Reiziger r = this.copyReiziger(reiziger);
+        
+        
+        if(!alleReizigers.contains(r)){
+            alleReizigers.add(r);
+        } 
+        
+        return r;
     }
 
     @Override
     /* Aanname:
         update zoekt naar een reiziger met een bepaalde identifier 
-        "update" deze met nieuwe informatie.*/
+        en "update" deze met nieuwe informatie.*/
     public Reiziger update(Reiziger reiziger) {
-        Reiziger r = reiziger;
+        Reiziger r = new Reiziger();
+        if(reiziger == null)
+        {
+            return r;
+        }
         for(Reiziger rg : alleReizigers){
-            if(r.getID() == rg.getID()){
-                alleReizigers.remove(rg);
-                alleReizigers.add(r);
+            if(reiziger.getID() == rg.getID()){
+                rg.setGBDatum(reiziger.getGBDatum());
+                rg.setNaam(reiziger.getNaam());
+                r = this.copyReiziger(reiziger);
+                break;
             }
         }
         return r;
@@ -74,6 +90,18 @@ public class ReizigerOracleDaoImpl /*extends OracleDao*/ implements ReizigerDAO 
     @Override
     public void closeConnection() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    private Reiziger copyReiziger(Reiziger reiziger){
+
+        Reiziger r = new Reiziger();
+        if(reiziger == null){
+            return r;
+        }
+        r.setID(reiziger.getID());
+        r.setGBDatum(reiziger.getGBDatum());
+        r.setNaam(reiziger.getNaam());
+        return r;
     }
     
     

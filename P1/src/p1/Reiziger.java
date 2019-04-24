@@ -26,8 +26,8 @@ public class Reiziger {
     private int identifier;
     
     public Reiziger(){
-        this.naam = null;
-        this.gbdatum = null;
+        /*this.naam = "";
+        this.gbdatum = java.sql.Date.valueOf("0000-01-01");*/
         this.identifier = counter;
         counter++;
     }
@@ -45,16 +45,23 @@ public class Reiziger {
         return this.gbdatum;
     }
     
-    /* Dit laat ALLEEN dates toe om te worden toegevoegd geen strings */
+    /*   
+    Throws IO exception when a wrong string is inputted. 
+    >>Find fix<<
+    */
     public void setGBDatum( String gb){
         Date new_gb = java.sql.Date.valueOf(gb);
         this.gbdatum = new_gb;
     }
     
+    public void setGBDatum( Date gb){
+        this.gbdatum = gb;
+    }
+    
         public int getID(){
         return this.identifier;
     }
-    /*
+        /*
         Deze functie lijkt onnodig maar is dat niet.
         Deze functie gaat in gebruik zodra de static counter 
         niet meer voldoende is.
@@ -64,16 +71,43 @@ public class Reiziger {
     }
     
     @Override
+    public String toString(){
+        return this.naam + " : " + this.gbdatum + " > " + this.identifier;
+    }
+    
+    @Override
     public boolean equals(Object obj){
         boolean equal = false;
+        if(obj == null){
+            return equal;
+        }
+        
         if(obj instanceof Reiziger){
             Reiziger temprg = (Reiziger)obj;
-            
-            if(     this.naam.equals(temprg.getNaam()) && 
-                    this.gbdatum.equals(temprg.getGBDatum()) &&
-                    this.identifier == temprg.getID()){
+            if(this.naam == null && temprg.getNaam() == null){
+                if(     this.gbdatum.equals(temprg.getGBDatum()) &&
+                        this.identifier == temprg.getID()){
+                            
+                    equal = true; 
+                }
+            }
+            else if(this.gbdatum == null && temprg.getGBDatum() == null){
+                if(this.naam.equals(temprg.getNaam()) && 
+                   this.identifier == temprg.getID()){
+                    equal = true;
+                }
+            }
+            else if (this.gbdatum != null &&
+                     temprg.getGBDatum() != null &&
+                     this.naam != null && 
+                     temprg.getNaam() != null){
                 
-                equal = true;                
+                        if(this.naam.equals(temprg.getNaam()) && 
+                           this.gbdatum.equals(temprg.getGBDatum()) &&
+                           this.identifier == temprg.getID()){
+
+                            equal = true;
+                }
             }
         }
         return equal;
