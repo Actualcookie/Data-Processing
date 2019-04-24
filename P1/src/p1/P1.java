@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p1;
 
-/**
- *
- * @author Tim
- */
-public class P1 {
 
-    /**
-     * @param args the command line arguments
-     */
+        
+public class P1 {
+        
     public static void main(String[] args) {
-        // TODO code application logic here
+        Reiziger rg1 = new Reiziger();
+        rg1.setNaam("tim"); rg1.setGBDatum("28-08-1995");
+        
+
     }
     
 }
