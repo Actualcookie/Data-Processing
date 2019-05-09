@@ -2,3 +2,14 @@
 /P1/build/
 /WAC/nbproject/private/
 /WAC/build/
+WAC/build.xml
+WAC/manifest.mf
+WAC/nbproject/build-impl.xml
+WAC/nbproject/genfiles.properties
+WAC/nbproject/project.properties
+WAC/nbproject/project.xml
+WAC/src/Client/Client.java
+WAC/src/Server/Server.java
+WAC/src/Server/Servlet.java
+WAC/src/wac/WAC.java
+WAC/src/wac/WAC1_4.java
