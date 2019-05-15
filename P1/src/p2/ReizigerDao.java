@@ -5,17 +5,17 @@
  */
 package p2;
 
-import p1.*;
+import p3.Reiziger;
 import java.util.List;
 
 /**
  *
  * @author Tim
  */
-public interface ReizigerDAO {
-    public List<Reiziger> findall();
+public interface ReizigerDao {
+    public List<Reiziger> findAll();
     
-    public List<Reiziger> findByDate(String GBDatum);
+    public List<Reiziger> findByGBdatum(String GBDatum);
     
     public Reiziger save(Reiziger reiziger);
     

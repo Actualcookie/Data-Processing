@@ -17,15 +17,15 @@ import java.util.logging.Logger;
  * @author Tim
  */
 public class OracleDao {
-    /*
+
     private static final String DB_DRIV = "oracle.jdbc.driver.OracleDriver";
     private static final String DB_URL = "jdbc:oracle:thin:@//192.168.2.8:1521/xepdb1";
     private static final String DB_USER = "OVCASUS";
     private static final String DB_PASS = "ovcasus";
-    private static Connection conn;*/
+    private static Connection conn;
     
     protected boolean getConnection() throws SQLException {
-       /* boolean connection = false;
+        boolean connection = false;
         try {
             Class.forName(DB_DRIV).newInstance();
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
@@ -37,8 +37,8 @@ public class OracleDao {
         } catch (ClassNotFoundException ex){
             Logger.getLogger(OracleDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return connection;*/
-       throw new UnsupportedOperationException("Not supported yet.");
+        return connection;
+       /*throw new UnsupportedOperationException("Not supported yet.");*/
     }
     
     public void closeConnection() throws SQLException{

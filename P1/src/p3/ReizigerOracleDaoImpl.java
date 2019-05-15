@@ -3,13 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package p2;
+package p3;
 
-import p3.OV_Chipkaart;
-import p3.OracleBaseDao;
-import p3.OV_ChipkaartOracleDaoImpl;
-import p3.ReizigerDao;
-import p3.Reiziger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -117,7 +112,7 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
 				+ reiziger.getID() + ",'" 
                                 + reiziger.getVoorletter() + "','" 
                                 + reiziger.getNaam() + "'," 
-                                + reiziger.getGBdatum() + "')");
+                                + reiziger.getGBdatum() + "'");
                         
 		} catch (SQLException e) {
 			e.printStackTrace();
