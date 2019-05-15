@@ -5,7 +5,6 @@
  */
 package p2;
 
-import p3.Reiziger;
 import java.util.List;
 
 /**

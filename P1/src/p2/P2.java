@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class P2 {
         
     public static void main(String[] args) {
-        ReizigerOracleDaoImpl reizigerdao = new p2.ReizigerOracleDaoImpl();
+        ReizigerOracleDaoImpl reizigerdao = new ReizigerOracleDaoImpl();
 		OV_ChipkaartOracleDaoImpl ovdao = new OV_ChipkaartOracleDaoImpl();
 
 		System.out.println(reizigerdao.getConnection());
@@ -15,9 +15,9 @@ public class P2 {
 		System.out.println(ovdao.findByKaartnummer(46392));
                 
                 Date r1date = java.sql.Date.valueOf("1995-08-28");
-                p3.Reiziger r1 = new p3.Reiziger(2, "TD", r1date ,"Schut");
+                Reiziger r1 = new Reiziger(2, "TD", r1date ,"Schut");
                 
-                p3.OV_Chipkaart chip1 = new p3.OV_Chipkaart(62, r1date , 2, 25);
+                OV_Chipkaart chip1 = new OV_Chipkaart(62, r1date , 2, 25);
                 chip1.setReiziger(r1);
                 
                 System.out.println(ovdao.save(chip1));

@@ -9,7 +9,7 @@ package p2;
  *
  * @author Tim
  */
-import p3.Reiziger;
+
 import java.util.Date;
 
 public class OV_Chipkaart {

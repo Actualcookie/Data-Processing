@@ -5,11 +5,6 @@
  */
 package p2;
 
-import p3.OV_Chipkaart;
-import p3.OracleBaseDao;
-import p3.OV_ChipkaartOracleDaoImpl;
-import p3.ReizigerDao;
-import p3.Reiziger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;

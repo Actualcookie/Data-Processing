@@ -9,9 +9,7 @@ package p2;
  *
  * @author Tim
  */
-import p3.OV_Chipkaart;
-import p3.OracleBaseDao;
-import p3.Reiziger;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
