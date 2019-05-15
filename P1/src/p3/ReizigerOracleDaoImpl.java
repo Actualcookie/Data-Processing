@@ -33,6 +33,7 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
                                         + "FROM reiziger");
                         
 			while (rs.next()) {
+                            //TO DO zet onderstaande om in aparte funtie voor gebruiks gemak.
 				Reiziger rei = new Reiziger();
 				rei.setID(rs.getInt("reizigerid"));
 				rei.setNaam(rs.getString("achternaam"));
@@ -42,7 +43,7 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
 					rei.addMijnOvchipkaart(ov);
 				}
 				allereizigers.add(rei);
-
+                               
 			}
 			return allereizigers;
 		} catch (SQLException e) {
@@ -62,12 +63,14 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
                                 + "WHERE reizigerId =" + ReizigerID);
                         
 			while (rs.next()) {
+                            //TO DO zet onderstaande om in aparte funtie voor gebruiks gemak.
 				Reiziger rei = new Reiziger();
 				rei.setID(rs.getInt("reizigerid"));
 				rei.setNaam(rs.getString("achternaam"));
 				rei.setGBdatum(rs.getDate("gebortedatum"));
 				rei.setVoorletter(rs.getString("voorletters"));
 				allereizigers.add(rei);
+                                
 			}
 			return allereizigers;
 		} catch (SQLException e) {

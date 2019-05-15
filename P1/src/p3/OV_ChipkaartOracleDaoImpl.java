@@ -35,7 +35,7 @@ public class OV_ChipkaartOracleDaoImpl extends OracleBaseDao {
 				ov.setGeldigTot(rs.getDate("geldigtot"));
 				ov.setSaldo(rs.getBigDecimal("saldo"));
 				alleOVChipkaarten.add(ov);
-
+                                ///TO DO voeg producten toe aan de lijsten.(misschien mbv aparte functie dit word namelijk veel herhaald)
 			}
 			return alleOVChipkaarten;
 		} catch (SQLException e) {
@@ -51,14 +51,16 @@ public class OV_ChipkaartOracleDaoImpl extends OracleBaseDao {
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("SELECT * FROM ov_chipkaart WHERE kaartnummer ='" + kaartnummer + "'");
-			while (rs.next()) {
+			while (!rs.next()) {
+                            //TO DO maak aparte functie van onderstaande text. Dat maakt het overzichtelijker.
+                            //Edit maakt deze wel aanzienlijk moeilijker uit tevoeren....
 				OV_Chipkaart ov = new OV_Chipkaart();
 				ov.setKaartnummer(rs.getInt("kaartnummer"));
 				ov.setKlasse(rs.getInt("klasse"));
 				ov.setGeldigTot(rs.getDate("geldigtot"));
 				ov.setSaldo(rs.getBigDecimal("saldo"));
 				alleOVChipkaarten.add(ov);
-
+                                ///TO DO voeg producten toe aan de lijsten.(misschien mbv aparte functie dit word namelijk veel herhaald)
 			}
 			return alleOVChipkaarten;
 		} catch (SQLException e) {
