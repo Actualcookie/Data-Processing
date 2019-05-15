@@ -16,9 +16,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class OV_ChipkaartOracleDaoImpl extends OracleBaseDao {
+    
 	public List<OV_Chipkaart> findAll() {
 		Connection connection = super.getConnection();
 		List<OV_Chipkaart> alleOVChipkaarten = new ArrayList<>();
@@ -65,22 +67,37 @@ public class OV_ChipkaartOracleDaoImpl extends OracleBaseDao {
 		return null;
 	}
 
-	public OV_Chipkaart save(OV_Chipkaart OVChipkaart) {
+	public boolean save(OV_Chipkaart OVChipkaart) {
 		Connection connection = super.getConnection();
-
+                
+                boolean saved = false;
+                
+                int kaartnummer = OVChipkaart.getKaartnummer();
+                int klasse = OVChipkaart.getKlasse();
+                Number saldo = OVChipkaart.getSaldo();
+                Date geldigdatum = OVChipkaart.getGeldigTot();
+                
+                if(OVChipkaart.getReiziger()== null)
+                {
+                    return saved;
+                }   
+                
+                Reiziger id = OVChipkaart.getReiziger();
+                String query = "insert into ov_chipkaart(kaartnummer, klasse, saldo,geldigtot, reizigerid) values("
+					+ kaartnummer + "," + klasse  + "," + saldo
+					+ ",To_date('" + geldigdatum + "','yyyy-mm-dd')," + id.getID()
+					+ ")";
+                
 		try {
 			Statement statement = connection.createStatement();
-			String query = "insert into ov_chipkaart(kaartnummer, klasse, saldo,geldigtot, reizigerid) values("
-					+ OVChipkaart.getKaartnummer() + "," + OVChipkaart.getKlasse() + "," + OVChipkaart.getSaldo()
-					+ ",To_date('" + OVChipkaart.getGeldigTot() + "','yyyy-mm-dd')," + OVChipkaart.getReiziger().getID()
-					+ ")";
+			
 			System.out.println(query);
 			statement.executeQuery(query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return OVChipkaart;
+		return saved;
 
 	}
 

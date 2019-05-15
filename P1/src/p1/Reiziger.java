@@ -61,11 +61,7 @@ public class Reiziger {
         public int getID(){
         return this.identifier;
     }
-        /*
-        Deze functie lijkt onnodig maar is dat niet.
-        Deze functie gaat in gebruik zodra de static counter 
-        niet meer voldoende is.
-        */
+
     public void setID(int id){
         this.identifier = id;
     }

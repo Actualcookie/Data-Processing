@@ -14,12 +14,6 @@ import java.util.ArrayList;
  */
 public class Reiziger {
     
-    /* 
-    om een ID aan te maken gebruik ik een static zodat deze automatisch 
-    optelt en stabiel blijft. Dit zal later moeten veranderen, omdat 
-    de counter reset na het sluiten van het programma. 
-    Voor nu zou het voldoende moeten zijn aangezien de rest 
-    van de data ook verloren gaat.*/
     private int identifier;
     private String voorletter;
     private Date gbdatum;

@@ -104,16 +104,18 @@ public class ReizigerOracleDaoImpl extends OracleBaseDao implements ReizigerDao 
 
 	public Reiziger save(Reiziger reiziger) {
 		Connection connection = super.getConnection();
+                int id = reiziger.getID();
+                String vrltr = reiziger.getVoorletter();
+                String nm = reiziger.getNaam();
+                Date gb = reiziger.getGBdatum();
+                
+                String start = "INSERT INTO reiziger (REIZIGERID, VOORLETTERS, ACHTERNAAM, GEBORTEDATUM) VALUES(";
+                String stat = start + id + ", '" + vrltr + "', '" + nm + "', '" + gb + "')";
 
 		try {
-			Statement statement = connection.createStatement();
-			statement.executeQuery("INSERT INTO reiziger(reizigerID, voorletters, achternaam, gebortedatum) "
-                                + "values("
-				+ reiziger.getID() + ",'" 
-                                + reiziger.getVoorletter() + "','" 
-                                + reiziger.getNaam() + "'," 
-                                + reiziger.getGBdatum() + "')");
-                        
+                    PreparedStatement statement = connection.prepareStatement(stat);
+                    statement.executeQuery();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
