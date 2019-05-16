@@ -92,7 +92,6 @@ public class OV_ChipkaartOracleDaoImpl extends OracleBaseDao {
                 
 		try {
 			Statement statement = connection.createStatement();
-			
 			System.out.println(query);
 			statement.executeQuery(query);
 		} catch (SQLException e) {
